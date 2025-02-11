@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SidemenuComponent } from '../shared/sidemenu/sidemenu.component';
+//Estos alias (@shared) se configuran en el tsconfig.json en paths
+import { SidemenuComponent } from '@shared/sidemenu/sidemenu.component';
+
 
 @Component({
   standalone: true,
