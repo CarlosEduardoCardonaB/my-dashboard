@@ -1,3 +1,7 @@
+<app-title [title]="titleEnviado" withShadow/>
+
+<!-- <h1 class="text-3xl mb-5">Control Flow</h1> -->
+
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   <!-- ngIf @if -->
   <div class="bg-white rounded shadow p-10">
@@ -39,6 +43,37 @@
     }
 
   </div>
+
+
+  <div class="bg-white rounded shadow p-10">
+    <ul>
+      @for (framework of frameworks(); track framework; let i = $index, first =  $first, last = $last, even = $even, odd = $odd, count = $count) {
+        <li [class]="{
+          'bg-red-100': even && !first && !last,
+          'bg-pink-100': odd && !first && !last,
+          'bg-blue-100': first || last
+        }">
+          {{ i + 1 }}/{{ count }} - {{ odd }} - {{ framework }}</li>
+
+      }
+    </ul>
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+
+    <ul>
+      @for (framework of frameworks2(); track $index) {
+        <li>{{ framework }}</li>
+      }@empty {
+        <li>No hay frameworks agregados</li>
+      }
+
+
+    </ul>
+
+
+  </div>
+
 </section>
 
 

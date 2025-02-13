@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { TitleComponent } from '@shared/title/title.component';
 
 type Grade = 'A'| 'B' | 'C' | 'D' | 'E' | 'F'
 
@@ -7,7 +8,9 @@ type Grade = 'A'| 'B' | 'C' | 'D' | 'E' | 'F'
 @Component({
   selector: 'app-control-flow',
   standalone: true,
-  imports: [],
+  imports: [
+    TitleComponent
+  ],
   templateUrl: './control-flow.component.html',
   styles: `
     :host {
@@ -19,13 +22,20 @@ type Grade = 'A'| 'B' | 'C' | 'D' | 'E' | 'F'
 //Con la palabra "default" podemos usar la ruta directa a este componente en el app.routes.ts
 export default class ControlFlowComponent {
 
+  public titleEnviado = 'Control Flow'
+
+
   public showContent = signal(false);
   //si declaramos esta señal como "asReadonly" no vamos a poder modificarla con el método "update"
   //public showContent = signal(false).asReadonly;
 
 
   public grade = signal<Grade>('A');
-  count = 0;
+  count:number = 0;
+  public frameworks = signal(['Angular', 'Vue', 'Svelte', 'Qwik', 'React']);
+
+  //Este caso de señal vacía es para probar el @empty del html, esto quiere decir que cuando no hay elementos, entonces se muestra lo que este adentro del @empty
+  public frameworks2 = signal([]);
 
 
   public toggleContent() {
