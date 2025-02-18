@@ -1,18 +1,11 @@
+<app-title title="Defer Views / Blocks"/>
+
 <section class="grid grid-cols-1">
 
-  <!-- El defer se usa para aplazar la carga de algún componente que es pesado y se requiere que no se bloquee la aplicación mientras carga -->
-  @defer () {
-    <app-heavy-loaders-slow cssClass="bg-blue-500" />
-  }
-  @placeholder {
-    <!-- El placeholder se usa para mostrar algo mientras carga el componente pesado -->
-    <p class="h-[600] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
-      Cargando...
-    </p>
-  }
+
 
   <!-- El defer se usa para aplazar la carga de algún componente que es pesado y se requiere que no se bloquee la aplicación mientras carga -->
-  @defer () {
+  @defer (on idle) {
     <app-heavy-loaders-slow cssClass="bg-purple-500" />
   }
   @placeholder {
@@ -23,7 +16,7 @@
   }
 
   <!-- El defer se usa para aplazar la carga de algún componente que es pesado y se requiere que no se bloquee la aplicación mientras carga -->
-  @defer () {
+  @defer (on viewport) {
     <app-heavy-loaders-slow cssClass="bg-green-500" />
   }
   @placeholder {
@@ -33,6 +26,17 @@
     </p>
   }
 
+  <!-- El defer se usa para aplazar la carga de algún componente que es pesado y se requiere que no se bloquee la aplicación mientras carga -->
+  @defer (on viewport) {
+    <!-- Dentro del paréntisis del @defer() se puede colocar una condición para saber hasta cuando debe cargar el elemento del DOM que está condicionado por el @defer -->
+      <app-heavy-loaders-slow cssClass="bg-blue-500" />
+    }
+    @placeholder {
+      <!-- El placeholder se usa para mostrar algo mientras carga el componente pesado -->
+      <p class="h-[600] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse">
+        Cargando...
+      </p>
+    }
 
 
 </section>
