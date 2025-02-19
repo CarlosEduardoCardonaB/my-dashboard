@@ -12,9 +12,104 @@
     </app-heavy-loaders-fast>
   }@placeholder {
      <div class="w-full h-20 bg-purple-100">
-      Ckick en el div
+      Interactuar con este div
      </div>
   }
 
+
+</section>
+
+
+<section>
+  <hr class="my-2">
+
+  <button #btnInteraction class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-22">
+    CLick Me!
+  </button>
+
+  <!-- Con este tipo de @defer "on interaction" lo que hacemos es retrazar la carga del componente "app-heavy-loaders-fast" hasta que se haga click en el botón #btnInteraction-->
+  @defer (on interaction( btnInteraction )) {
+      <!-- En este caso se le están enviando al  app-heavy-loaders-fast atributos del DOM, y allí se reciben con el ng-content -->
+    <app-heavy-loaders-fast cssClass="bg-yellow-500 h-20">
+      <span>On Interaction</span>
+    </app-heavy-loaders-fast>
+  }@placeholder {
+     <div class="w-full h-20 bg-purple-100">
+      Ckick en el botón
+     </div>
+  }
+
+</section>
+
+
+<section>
+  <hr class="my-2">
+
+  <!-- Con este tipo de @defer "on interaction" lo que hacemos es retrazar la carga del componente "app-heavy-loaders-fast" hasta que se haga click en el botón #btnInteraction-->
+  @defer (on hover( btnInteraction )) {
+      <!-- En este caso se le están enviando al  app-heavy-loaders-fast atributos del DOM, y allí se reciben con el ng-content -->
+    <app-heavy-loaders-fast cssClass="bg-pink-500 h-20">
+      <span>On hover</span>
+    </app-heavy-loaders-fast>
+  }@placeholder {
+     <div class="w-full h-20 bg-purple-100">
+      Pase el mouse por encima del botón
+     </div>
+  }
+
+</section>
+
+
+
+<section>
+  <hr class="my-2">
+
+  <!-- Con este tipo de @defer "on interaction" lo que hacemos es retrazar la carga del componente "app-heavy-loaders-fast" hasta que se haga click en el botón #btnInteraction-->
+  @defer (on immediate) {
+      <!-- En este caso se le están enviando al  app-heavy-loaders-fast atributos del DOM, y allí se reciben con el ng-content -->
+    <app-heavy-loaders-fast cssClass="bg-gray-500 h-20">
+      <span>On immediate</span>
+    </app-heavy-loaders-fast>
+  }@placeholder {
+     <div class="w-full h-20 bg-purple-100">
+      Ni lo vemos
+     </div>
+  }
+
+</section>
+
+
+<section>
+  <hr class="my-2">
+
+  <!-- Con este tipo de @defer "on interaction" lo que hacemos es retrazar la carga del componente "app-heavy-loaders-fast" hasta que se haga click en el botón #btnInteraction-->
+  @defer (on timer( 2000 )) {
+      <!-- En este caso se le están enviando al  app-heavy-loaders-fast atributos del DOM, y allí se reciben con el ng-content -->
+    <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+      <span>On Interaction</span>
+    </app-heavy-loaders-fast>
+  }@placeholder {
+     <div class="w-full h-20 bg-purple-100">
+      2 Segundos
+     </div>
+  }
+
+</section>
+
+
+<section>
+  <hr class="my-2">
+
+  <!-- Con este tipo de @defer "on interaction" lo que hacemos es retrazar la carga del componente "app-heavy-loaders-fast" hasta que se haga click en el botón #btnInteraction-->
+  @defer (on hover; prefetch on idle) {
+      <!-- En este caso se le están enviando al  app-heavy-loaders-fast atributos del DOM, y allí se reciben con el ng-content -->
+    <app-heavy-loaders-fast cssClass="bg-green-500 h-20">
+      <span>On hover, idle</span>
+    </app-heavy-loaders-fast>
+  }@placeholder {
+     <div class="w-full h-20 bg-purple-100">
+      Hoover
+     </div>
+  }
 
 </section>
